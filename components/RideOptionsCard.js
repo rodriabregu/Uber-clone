@@ -27,7 +27,7 @@ const data = [
     },
 ];
 
-const SURGE_CHARGE_RATE = 1.5
+const SURGE_CHARGE_RATE = 1;
 
 const RideOptionsCard = () => {
     const navigation = useNavigation();
@@ -44,7 +44,7 @@ const RideOptionsCard = () => {
                     <Icon name='chevron-left' type='fontawesome' />
                 </TouchableOpacity>
             </View>
-            <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance.text}</Text>
+            <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance?.text}</Text>
             <FlatList 
                 data={data}
                 keyExtractor={item => item.id}
@@ -65,12 +65,22 @@ const RideOptionsCard = () => {
                             <Text style={tw`text-xl font-semibold`}>{title}</Text>
                             <Text style={tw``}>{travelTimeInformation?.duration.text} Travel time.</Text>
                         </View>
-                        <Text style={tw`text-xl`}>$99</Text>
+                        <Text style={tw`text-xl`}>
+                        
+                            {new Intl.NumberFormat('en-gb', {
+                                style: 'currency',
+                                currency: 'USD'
+                            }).format(
+                                (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * multiplier) / 100
+                            )}
+
+
+                        </Text>
                     </TouchableOpacity>
                 )}
             />
 
-            <View>
+            <View style={tw`mt-auto border-t border-gray-200`}>
                 <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && 'bg-gray-300'}`}>
                     <Text style={tw`text-center text-white text-xl`}>
                         {!selected && 'Choose a car'}
