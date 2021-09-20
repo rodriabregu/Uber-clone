@@ -63,7 +63,7 @@ const RideOptionsCard = () => {
                         />
                         <View style={tw`-ml-6`}>
                             <Text style={tw`text-xl font-semibold`}>{title}</Text>
-                            <Text style={tw``}>{travelTimeInformation?.duration.text} Travel time.</Text>
+                            <Text style={tw``}>{travelTimeInformation?.duration?.text} Travel time.</Text>
                         </View>
                         <Text style={tw`text-xl`}>
                         
@@ -71,7 +71,7 @@ const RideOptionsCard = () => {
                                 style: 'currency',
                                 currency: 'USD'
                             }).format(
-                                (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * multiplier) / 100
+                                (travelTimeInformation?.duration?.value * SURGE_CHARGE_RATE * multiplier) / 100
                             )}
 
 
