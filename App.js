@@ -1,4 +1,5 @@
 import React from 'react';
+import { KeyboardAvoidingView } from 'react-native';
 import { Provider } from 'react-redux';
 import HomeScreen from './screens/HomeScreen';
 import MapScreen from './screens/MapScreen';
@@ -16,6 +17,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
+          <KeyboardAvoidingView>
           <Stack.Navigator>
             <Stack.Screen
             name='HomeScreen'
@@ -33,6 +35,7 @@ export default function App() {
             />
           </Stack.Navigator>
           {/* <HomeScreen /> */}
+          </KeyboardAvoidingView>
         </SafeAreaProvider>
       </NavigationContainer>
     </Provider>

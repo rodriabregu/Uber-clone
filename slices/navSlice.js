@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     origin: null,
@@ -9,7 +9,7 @@ const initialState = {
 export const navSlice = createSlice({
     name: 'nav',
     initialState,
-    retucer: {
+    reducers: {
         setOrigin: (state, action) => {
             state.origin = action.payload
         },
